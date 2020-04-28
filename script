@@ -1,0 +1,9 @@
+sudo dmesg -c > /dev/null
+for file in ./testcase/*     # list directories in the form "/tmp/dirname/"
+do
+    file=${file%.*}
+    echo ${file##*/}
+    sudo make run < testcase/${file##*/}.txt > output/${file##*/}_stdout.txt
+    sudo dmesg -c | grep 'OS project1' > output/${file##*/}_dmesg.txt
+    # print everything after the final "/"
+done
