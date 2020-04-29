@@ -101,6 +101,7 @@ int scheduling(struct process *proc, int nproc, int policy)
 			fprintf(stderr, "%s done at time %d.\n", proc[running].name, t_cur);
 #endif
 			printf("%s %d\n", proc[running].name, proc[running].pid);
+			fflush(stdout);
 			running = -1;
 			finish_cnt++;
 
